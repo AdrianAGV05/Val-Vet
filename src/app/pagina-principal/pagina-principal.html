@@ -1,0 +1,54 @@
+<header class="header">
+  <div class="user-icons">
+    <a routerLink="/usuario" class="user-icon" title="Usuario Cliente">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+      </svg>
+      <span class="icon-label">Login</span>
+    </a>
+  </div>
+  <div class="header-content">
+    <h1 class="title">Val Vet</h1>
+    <h2 class="subtitle">Cuidado veterinario y estetico</h2>
+  </div>
+</header>
+<app-main-header></app-main-header>
+<div class="contenido">
+  <p>
+    Acompañamos a tus mascotas en todas las etapas de su vida,
+    garantizando una atención profesional, cálida y responsable.
+  </p>
+</div>
+
+<div class="carousel-container">
+  <div class="carousel">
+    <div class="carousel-slide">
+      <img src="https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?w=800" alt="Veterinario examinando perro">
+      <div class="carousel-caption">Atención Veterinaria Profesional</div>
+    </div>
+    <div class="carousel-slide">
+      <img src="https://images.unsplash.com/photo-1548681528-6a5c45b66b42?w=800" alt="Gato siendo examinado">
+      <div class="carousel-caption">Cuidado para Todas las Mascotas</div>
+    </div>
+    <div class="carousel-slide">
+      <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=800" alt="Perro feliz">
+      <div class="carousel-caption">Bienestar y Salud</div>
+    </div>
+    <div class="carousel-slide">
+      <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=800" alt="Mascota recibiendo vacuna">
+      <div class="carousel-caption">Vacunación y Prevención</div>
+    </div>
+    <div class="carousel-slide">
+      <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=800" alt="Perro y gato juntos">
+      <div class="carousel-caption">Compañeros Saludables</div>
+    </div>
+  </div>
+  <button class="carousel-btn prev" (click)="prevSlide()">&#10094;</button>
+  <button class="carousel-btn next" (click)="nextSlide()">&#10095;</button>
+  <div class="carousel-dots">
+    <span class="dot" *ngFor="let slide of slides; let i = index" [class.active]="i === currentSlide"
+      (click)="goToSlide(i)"></span>
+  </div>
+</div>
+<app-pie-de-pagina></app-pie-de-pagina>

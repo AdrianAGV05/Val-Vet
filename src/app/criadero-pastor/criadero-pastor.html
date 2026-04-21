@@ -1,0 +1,153 @@
+<header class="header">
+  <a routerLink="/pagina-principal" class="home-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+    </svg>
+  </a>
+  <div class="header-content">
+    <h1 class="title">Val Vet</h1>
+    <h2 class="subtitle">Cuidado veterinario y estetico</h2>
+  </div>
+</header>
+<app-main-header></app-main-header>
+
+<div class="criadero-container">
+  <div class="intro-section">
+    <h2 class="section-title">Criadero Pastor Alemán</h2>
+    <p class="intro-text">
+      Conoce a nuestros hermosos pastores alemanes de línea pura.
+      Criados con amor, cuidado profesional y los más altos estándares de calidad.
+    </p>
+  </div>
+
+  <!-- Galería de Perros -->
+  <div class="dogs-gallery">
+
+    <!-- Perro 1 -->
+    <div class="dog-card">
+      <div class="dog-image">
+        <img src="/assets/pastor6.jpeg" alt="Pastor Alemán">
+      </div>
+      <div class="dog-info">
+        <h3 class="dog-name">Ole de la Marquesa</h3>
+        <div class="dog-details">
+          <p><strong>Papá:</strong> .....</p>
+          <p><strong>Mamá:</strong> .....</p>
+          <p><strong>Edad:</strong> 1.5 años</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Perro 1b - Nueva tarjeta -->
+    <div class="dog-card">
+      <div class="dog-image">
+        <img src="/assets/pastor5.jpeg" alt="Pastor Alemán">
+      </div>
+      <div class="dog-info">
+        <h3 class="dog-name">Alexa de la Marquesa</h3>
+        <div class="dog-details">
+          <p><strong>Papá:</strong> .....</p>
+          <p><strong>Mamá:</strong> .....</p>
+          <p><strong>Edad:</strong> 1 año</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Perro 2 -->
+    <div class="dog-card">
+      <div class="dog-image">
+        <img src="/assets/pastor2.jpeg" alt="Pastor Alemán">
+      </div>
+      <div class="dog-info">
+        <h3 class="dog-name">Wanda de la Marquesa </h3>
+        <div class="dog-details">
+          <p><strong>Papá:</strong> .....</p>
+          <p><strong>Mamá:</strong> .....</p>
+          <p><strong>Edad:</strong> 5 años</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Perro 3 -->
+    <div class="dog-card">
+      <div class="dog-image">
+        <img src="/assets/pastor3.jpeg" alt="Pastor Alemán">
+      </div>
+      <div class="dog-info">
+        <h3 class="dog-name">Vania de la Mrquesa</h3>
+        <div class="dog-details">
+          <p><strong>Papá:</strong> .....</p>
+          <p><strong>Mamá:</strong> ....</p>
+          <p><strong>Edad:</strong> 5 años</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Perro 4 -->
+    <div class="dog-card">
+      <div class="dog-image">
+        <img src="/assets/pastor4.jpeg" alt="Pastor Alemán">
+      </div>
+      <div class="dog-info">
+        <h3 class="dog-name">Sasha de la Marquesa</h3>
+        <div class="dog-details">
+          <p><strong>Papá:</strong> ....</p>
+          <p><strong>Mamá:</strong> ....</p>
+          <p><strong>Edad:</strong> 4 años</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Sección de Videos -->
+  <div class="videos-section">
+    <h2 class="section-title">Videos de Nuestros Pastores</h2>
+
+    <div class="videos-gallery">
+
+      <!-- Video 1 -->
+      <div class="video-card">
+        <div class="video-container">
+          <video controls poster="/assets/video-thumb1.jpg">
+            <source src="/assets/video1.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+          </video>
+        </div>
+        <div class="video-info">
+          <h4>Entrenamiento de Alexa</h4>
+          <p>Sesión de entrenamiento básico</p>
+        </div>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="video-card">
+        <div class="video-container">
+          <video controls poster="/assets/video-thumb2.jpg">
+            <source src="/assets/video2.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+          </video>
+        </div>
+        <div class="video-info">
+          <h4>Vania presente en la FCM</h4>
+          <p>Momento de Resultados</p>
+        </div>
+      </div>
+
+      <!-- Video 3 -->
+      <div class="video-card">
+        <div class="video-container">
+          <video controls poster="/assets/video-thumb3.jpg">
+            <source src="/assets/video3.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+          </video>
+        </div>
+        <div class="video-info">
+          <h4>Cachorros</h4>
+          <p>Nueva camada disponible</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-pie-de-pagina></app-pie-de-pagina>

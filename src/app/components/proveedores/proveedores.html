@@ -1,0 +1,175 @@
+<div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2M12,15.7L8.63,17.2L12,9L15.37,17.2L12,15.7Z" />
+                    </svg>
+                </div>
+                <span class="logo-text">PetVet</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-item" routerLink="/admin">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M13,3H21V11H13V3M13,13H21V21H13V13M3,3H11V11H3V3M3,13H11V21H3V13Z" />
+                </svg>
+                Dashboard
+            </div>
+            <div class="nav-section">CLIENTES</div>
+            <div class="nav-item has-submenu" routerLink="/clientes">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z" />
+                </svg>
+                Clientes
+            </div>
+            <div class="nav-item" routerLink="/historial-clinico">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19,20H5V18H19V20M19,10H5V8H19V10M19,15H5V13H19V15M19,5H5V3H19V5Z" />
+                </svg>
+                Historial Medico
+            </div>
+
+            <div class="nav-section">INVENTARIO</div>
+            <div class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M21,16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V7.5C3,7.12 3.21,6.79 3.53,6.62L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.79,6.79 21,7.12 21,7.5V16.5Z" />
+                </svg>
+                Productos
+            </div>
+            <div class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M10,4V8H14V4H10M16,4V8H20V4H16M4,4V8H8V4H4M10,10V14H14V10H10M16,10V14H20V10H16M4,10V14H8V10H4M10,16V20H14V16H10M16,16V20H20V16H16M4,16V20H8V16H4" />
+                </svg>
+                Categorias
+            </div>
+            <div class="nav-item active" routerLink="/proveedores">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20,8H4V6H20V8M20,18H4V12H20V18Z" />
+                </svg>
+                Proveedores
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="breadcrumb">Inicio</div>
+            <div class="header-actions">
+                <div class="branch-selector">
+                    Sucursal Principal
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                    </svg>
+                </div>
+                <div class="user-profile">
+                    <div class="avatar">AS</div>
+                    <div class="user-info">
+                        <span class="user-name">Administrador</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="main-content">
+            <div class="view-header">
+                <div>
+                    <h1>Proveedores y Documentos</h1>
+                    <p>Gestión del directorio y documentos de proveedores</p>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table class="admin-table provider-table">
+                    <thead>
+                        <tr>
+                            <th>Proveedor</th>
+                            <th>Contacto Responsable</th>
+                            <th>Teléfono</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <ng-container *ngFor="let prov of proveedores">
+                        <tbody class="provider-tbody">
+                            <tr (click)="toggleExpand(prov)" class="provider-row">
+                                <td style="font-weight: 700; color: #1d5f36; font-size: 1.05rem;">
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <div class="prov-avatar">{{ prov.nombre.charAt(0) }}</div>
+                                        {{ prov.nombre }}
+                                    </div>
+                                </td>
+                                <td>{{ prov.contacto }}</td>
+                                <td>{{ prov.telefono }}</td>
+                                <td style="text-align: right; color: #64748b;">
+                                    <span style="font-size: 0.8rem; margin-right: 10px; font-weight: 600;">{{
+                                        prov.documentos.length }} docs</span>
+                                    <svg *ngIf="!prov.expanded" viewBox="0 0 24 24" fill="currentColor" width="24"
+                                        height="24" style="vertical-align: middle;">
+                                        <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                                    </svg>
+                                    <svg *ngIf="prov.expanded" viewBox="0 0 24 24" fill="currentColor" width="24"
+                                        height="24" style="vertical-align: middle; color: #10b981;">
+                                        <path d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z" />
+                                    </svg>
+                                </td>
+                            </tr>
+                            <tr *ngIf="prov.expanded" class="expanded-row">
+                                <td colspan="4" class="docs-cell">
+                                    <div class="documentos-lista">
+                                        <div class="docs-header">
+                                            <h4>Documentos de {{ prov.nombre }}</h4>
+                                            <button class="btn-primary" style="padding: 6px 14px; font-size: 0.8rem;">
+                                                Subir Documento
+                                            </button>
+                                        </div>
+                                        <table class="docs-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nombre Documento</th>
+                                                    <th>Tipo</th>
+                                                    <th>Fecha</th>
+                                                    <th>Acción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let doc of prov.documentos">
+                                                    <td style="font-weight: 500;">
+                                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                                            <svg viewBox="0 0 24 24" fill="#ef4444" width="22"
+                                                                height="22">
+                                                                <path
+                                                                    d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M13.5,16V19H10.5V16H8L12,12L16,16H13.5M13,9V3.5L18.5,9H13Z" />
+                                                            </svg>
+                                                            {{ doc.nombre }}
+                                                        </div>
+                                                    </td>
+                                                    <td><span class="badge">{{ doc.tipo }}</span></td>
+                                                    <td>{{ doc.fecha }}</td>
+                                                    <td>
+                                                        <button class="btn-icon btn-download" title="Descargar">
+                                                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                                                <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+                                                            </svg>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </ng-container>
+                </table>
+            </div>
+        </main>
+    </div>
+</div>

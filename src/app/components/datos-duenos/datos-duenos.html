@@ -1,0 +1,30 @@
+<div class="main-container">
+  <div class="form-container">
+    <h1>Registro de Dueños</h1>
+    <form>
+      <div class="form-group">
+        <label>Nombre:</label>
+        <input type="text" [(ngModel)]="dueno.nombre" name="nombre" placeholder="" required #nombre="ngModel">
+      </div>
+
+      <div class="form-group">
+        <label>Correo:</label>
+        <input type="text" [(ngModel)]="dueno.correo" name="correo" placeholder="">
+      </div>
+      <div class="form-group">
+        <label>Dirección:</label>
+        <input type="text" [(ngModel)]="dueno.direccion" name="dirección" placeholder="">
+      </div>
+      <div class="form-group">
+        <label>Telefono:</label>
+        <input type="text" [(ngModel)]="dueno.telefono" name="telefono" placeholder="Ej. 0123456789">
+      </div>
+      <div class="form-group">
+        <label>Telefono2:</label>
+        <input type="text" [(ngModel)]="dueno.telefono2" name="telefono2" placeholder="Ej. 0123456789">
+      </div>
+      <button type="submit" class="btn-registrar" (click)="guardarDatosDueno()">{{botonAccion}}</button>
+    </form>
+  </div>
+</div>
+<app-pie-de-pagina></app-pie-de-pagina>
