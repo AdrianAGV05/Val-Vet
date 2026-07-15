@@ -1,0 +1,64 @@
+<header class="header">
+  <a routerLink="/servicios" class="home-icon" title="Volver a Servicios">
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+    </svg>
+  </a>
+  <div class="header-content">
+    <h1 class="title">Val Vet</h1>
+    <h2 class="subtitle">Cuidado veterinario y estetico</h2>
+  </div>
+</header>
+<app-main-header></app-main-header>
+
+<div class="content">
+  <div class="header-banner">
+    <img src="/assets/bano-perro.png" alt="Baños banner" class="banner-logo">
+    <div class="banner-text">
+      <h2 class="section-title">Baños e Higiene para Mascotas</h2>
+      <p class="section-description">
+        Mantén a tu mascota limpia, fresca y saludable con nuestra variedad de baños especializados. Utilizamos agua templada, secado manual y los mejores productos adaptados a su tipo de pelaje y sensibilidad de la piel. Agenda su cita hoy.
+      </p>
+    </div>
+  </div>
+
+  <div class="banos-menu">
+    @for (servicio of servicios; track servicio.nombre) {
+      <div class="servicio-card">
+        <div class="servicio-imagen">
+          <img [src]="servicio.imagen" [alt]="servicio.nombre">
+          <span class="tipo-badge" [ngClass]="servicio.tipo.toLowerCase().replace(' ', '-')">
+            {{ servicio.tipo }}
+          </span>
+        </div>
+        <div class="servicio-info">
+          <div class="meta-info">
+            <span class="duracion-badge">{{ servicio.duracion }}</span>
+          </div>
+          <h3>{{ servicio.nombre }}</h3>
+          <p class="descripcion">{{ servicio.descripcion }}</p>
+          
+          <div class="incluye-seccion">
+            <h4>¿Qué Incluye el Servicio?</h4>
+            <ul>
+              @for (item of servicio.incluye; track item) {
+                <li>
+                  <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                  </svg>
+                  <span>{{ item }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+          
+          <a href="https://wa.me/527228412750?text=Hola,%20me%20gustaria%20agendar%20una%20cita%20para%20el%20servicio%20de%20{{ servicio.nombre }}" target="_blank" class="btn-agendar">
+            Agendar Cita en WhatsApp
+          </a>
+        </div>
+      </div>
+    }
+  </div>
+</div>
+
+<app-pie-de-pagina></app-pie-de-pagina>

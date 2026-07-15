@@ -1,0 +1,325 @@
+.header {
+  background: linear-gradient(to right, #0284c7, #0369a1);
+  padding: 40px 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.home-icon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.home-icon:hover {
+  color: #0284c7;
+  background: #ffffff;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.header-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  font-size: 60px;
+  margin: 0;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  letter-spacing: 3px;
+  font-family: 'Arial Black', 'Arial', sans-serif;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-size: 40px;
+  margin: 0;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  letter-spacing: 3px;
+  font-family: 'Arial Black', 'Arial', sans-serif;
+  text-transform: uppercase;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+  padding: 40px 20px;
+  background-color: #f0f9ff; /* Very light sky blue background */
+}
+
+/* Banner section styling */
+.header-banner {
+  background: linear-gradient(135deg, #075985, #0369a1);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 0 auto 40px auto;
+  max-width: 1400px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  box-shadow: 0 8px 30px rgba(3, 105, 161, 0.15);
+  color: white;
+  border-left: 5px solid #38bdf8;
+}
+
+.banner-logo {
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+  object-fit: cover;
+  border: 4px solid #38bdf8;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.banner-text {
+  flex: 1;
+}
+
+.section-title {
+  font-size: 40px;
+  color: #38bdf8;
+  margin: 0 0 10px 0;
+  font-family: 'Arial Black', 'Arial', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.section-description {
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 0;
+  font-family: 'Georgia', serif;
+  color: #bae6fd;
+}
+
+/* Grid & Cards styling */
+.banos-menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.servicio-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 3px solid transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.servicio-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(3, 105, 161, 0.12);
+  border-color: #38bdf8;
+}
+
+.servicio-imagen {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.servicio-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.servicio-card:hover .servicio-imagen img {
+  transform: scale(1.08);
+}
+
+.tipo-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.tipo-badge.servicio-básico {
+  background-color: #0d9488; /* Teal */
+}
+
+.tipo-badge.cuidado-dermatológico {
+  background-color: #0284c7; /* Sky Blue */
+}
+
+.tipo-badge.tratamiento-preventivo {
+  background-color: #e11d48; /* Crimson */
+}
+
+.tipo-badge.spa-premium {
+  background-color: #8b5cf6; /* Violet */
+}
+
+.servicio-info {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.meta-info {
+  margin-bottom: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.duracion-badge {
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.servicio-info h3 {
+  font-size: 22px;
+  color: #0f172a;
+  margin: 0 0 12px 0;
+  font-family: 'Arial Black', 'Arial', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.descripcion {
+  font-size: 15px;
+  color: #475569;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  font-family: 'Georgia', serif;
+  flex-grow: 1;
+}
+
+.incluye-seccion {
+  margin-bottom: 25px;
+}
+
+.incluye-seccion h4 {
+  font-size: 14px;
+  color: #0284c7;
+  text-transform: uppercase;
+  margin: 0 0 10px 0;
+  font-family: 'Arial Black', 'Arial', sans-serif;
+  letter-spacing: 1px;
+}
+
+.incluye-seccion ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.incluye-seccion li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  color: #334155;
+  font-family: 'Georgia', serif;
+}
+
+.check-icon {
+  width: 16px;
+  height: 16px;
+  color: #0284c7;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.btn-agendar {
+  width: 100%;
+  padding: 12px 25px;
+  background: linear-gradient(to right, #0284c7, #0369a1);
+  color: #ffffff;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.btn-agendar:hover {
+  background: #ffffff;
+  color: #0284c7;
+  border-color: #0284c7;
+  transform: scale(1.03);
+  box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4);
+}
+
+@media (max-width: 768px) {
+  .header-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .banner-logo {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .section-title {
+    font-size: 28px;
+  }
+  
+  .title {
+    font-size: 40px;
+  }
+  
+  .subtitle {
+    font-size: 26px;
+  }
+}
