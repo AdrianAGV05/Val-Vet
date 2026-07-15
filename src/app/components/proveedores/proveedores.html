@@ -14,21 +14,22 @@
         </div>
 
         <nav class="sidebar-nav">
-            <div class="nav-item" routerLink="/admin">
+            <div class="nav-item" routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M13,3H21V11H13V3M13,13H21V21H13V13M3,3H11V11H3V3M3,13H11V21H3V13Z" />
                 </svg>
                 Dashboard
             </div>
+
             <div class="nav-section">CLIENTES</div>
-            <div class="nav-item has-submenu" routerLink="/clientes">
+            <div class="nav-item has-submenu" routerLink="/clientes" routerLinkActive="active">
                 <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
                     <path
                         d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z" />
                 </svg>
                 Clientes
             </div>
-            <div class="nav-item" routerLink="/historial-clinico">
+            <div class="nav-item" routerLink="/historial-clinico" routerLinkActive="active">
                 <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M19,20H5V18H19V20M19,10H5V8H19V10M19,15H5V13H19V15M19,5H5V3H19V5Z" />
                 </svg>
@@ -43,18 +44,23 @@
                 </svg>
                 Productos
             </div>
-            <div class="nav-item">
-                <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M10,4V8H14V4H10M16,4V8H20V4H16M4,4V8H8V4H4M10,10V14H14V10H10M16,10V14H20V10H16M4,10V14H8V10H4M10,16V20H14V16H10M16,16V20H20V16H16M4,16V20H8V16H4" />
-                </svg>
-                Categorias
-            </div>
-            <div class="nav-item active" routerLink="/proveedores">
+            <div class="nav-item" routerLink="/proveedores" routerLinkActive="active">
                 <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M20,8H4V6H20V8M20,18H4V12H20V18Z" />
                 </svg>
                 Proveedores
+            </div>
+            <div class="nav-item" routerLink="/listado-medicamentos" routerLinkActive="active">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.5,4.5C17.7,2.7 14.8,2.7 13,4.5L4.5,13C2.7,14.8 2.7,17.7 4.5,19.5S9.8,21.3 11.6,19.5L20.1,11C21.9,9.2 21.9,6.3 20.1,4.5L19.5,4.5M15.1,10.6L10.6,15.1L9,13.5L13.5,9L15.1,10.6Z" />
+                </svg>
+                Medicamentos
+            </div>
+            <div class="nav-item" routerLink="/carnet-vacunacion" routerLinkActive="active">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.5,4.5C17.7,2.7 14.8,2.7 13,4.5L4.5,13C2.7,14.8 2.7,17.7 4.5,19.5S9.8,21.3 11.6,19.5L20.1,11C21.9,9.2 21.9,6.3 20.1,4.5L19.5,4.5M15.1,10.6L10.6,15.1L9,13.5L13.5,9L15.1,10.6Z" />
+                </svg>
+                Carnet Vacunacion
             </div>
         </nav>
     </aside>
@@ -81,9 +87,17 @@
         </header>
         <main class="main-content">
             <div class="view-header">
-                <div>
-                    <h1>Proveedores y Documentos</h1>
-                    <p>Gestión del directorio y documentos de proveedores</p>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h1>Proveedores y Documentos</h1>
+                        <p>Gestión del directorio y documentos de proveedores</p>
+                    </div>
+                    <button class="btn-primary" (click)="openAddModal()">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                            <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+                        </svg>
+                        Agregar Proveedor
+                    </button>
                 </div>
             </div>
 
@@ -94,6 +108,7 @@
                             <th>Proveedor</th>
                             <th>Contacto Responsable</th>
                             <th>Teléfono</th>
+                            <th>Acciones</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -108,6 +123,15 @@
                                 </td>
                                 <td>{{ prov.contacto }}</td>
                                 <td>{{ prov.telefono }}</td>
+                                <td class="acciones-cell" (click)="$event.stopPropagation()">
+                                    <div class="acciones">
+                                        <button class="btn-icon btn-editar" title="Editar" (click)="openEditModal(prov, $event)">
+                                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </td>
                                 <td style="text-align: right; color: #64748b;">
                                     <span style="font-size: 0.8rem; margin-right: 10px; font-weight: 600;">{{
                                         prov.documentos.length }} docs</span>
@@ -126,7 +150,8 @@
                                     <div class="documentos-lista">
                                         <div class="docs-header">
                                             <h4>Documentos de {{ prov.nombre }}</h4>
-                                            <button class="btn-primary" style="padding: 6px 14px; font-size: 0.8rem;">
+                                            <input type="file" #fileInput style="display: none" (change)="onFileSelected($event, prov)">
+                                            <button class="btn-primary" style="padding: 6px 14px; font-size: 0.8rem;" (click)="fileInput.click()">
                                                 Subir Documento
                                             </button>
                                         </div>
@@ -140,7 +165,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr *ngFor="let doc of prov.documentos">
+                                                <tr *ngFor="let doc of prov.documentos; let i = index">
                                                     <td style="font-weight: 500;">
                                                         <div style="display: flex; align-items: center; gap: 8px;">
                                                             <svg viewBox="0 0 24 24" fill="#ef4444" width="22"
@@ -154,11 +179,18 @@
                                                     <td><span class="badge">{{ doc.tipo }}</span></td>
                                                     <td>{{ doc.fecha }}</td>
                                                     <td>
-                                                        <button class="btn-icon btn-download" title="Descargar">
-                                                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                                                <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
-                                                            </svg>
-                                                        </button>
+                                                        <div style="display: flex; gap: 8px;">
+                                                            <button class="btn-icon btn-download" title="Ver Documento" (click)="viewDocument(doc)">
+                                                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                                                    <path d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z" />
+                                                                </svg>
+                                                            </button>
+                                                            <button class="btn-icon btn-eliminar" title="Eliminar Documento" (click)="deleteDocument(prov, i)">
+                                                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                                                    <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+                                                                </svg>
+                                                            </button>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -171,5 +203,28 @@
                 </table>
             </div>
         </main>
+
+        <!-- Modal Agregar/Editar Proveedor -->
+        <div class="modal-overlay" *ngIf="showModal" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000;">
+            <div class="modal-content form-container" style="margin: 0;">
+                <h1>{{ isEditing ? 'Editar Proveedor' : 'Agregar Proveedor' }}</h1>
+                <div class="form-group">
+                    <label>Nombre del Proveedor</label>
+                    <input type="text" [(ngModel)]="formNombre" placeholder="Ej. Zoetis">
+                </div>
+                <div class="form-group">
+                    <label>Contacto Responsable</label>
+                    <input type="text" [(ngModel)]="formContacto" placeholder="Nombre del contacto">
+                </div>
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    <input type="text" [(ngModel)]="formTelefono" placeholder="Teléfono">
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button class="btn-primary" style="flex: 1; background: #94a3b8; justify-content: center;" (click)="closeModal()">Cancelar</button>
+                    <button class="btn-registrar" style="flex: 1; margin-top: 0;" (click)="saveProveedor()">Aceptar</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

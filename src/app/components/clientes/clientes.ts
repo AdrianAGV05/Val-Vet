@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-clientes',
   standalone: true,
-  imports: [RouterLink],
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './clientes.html',
   styleUrl: './clientes.css',
 })

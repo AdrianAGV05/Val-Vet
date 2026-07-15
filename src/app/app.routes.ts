@@ -11,6 +11,17 @@ import { Admin } from './components/admin/admin';
 import { Clientes } from './components/clientes/clientes';
 import { HistorialClinico } from './components/historial-clinico/historial-clinico';
 import { Proveedores } from './components/proveedores/proveedores';
+import { ListadoMedicamentos } from './components/listado-medicamentos/listado-medicamentos';
+import { CarnetVacunacion } from './components/carnet-vacunacion/carnet-vacunacion';
+import { AlimentosNupec } from './components/alimentos-nupec/alimentos-nupec';
+import { AlimentosProplan } from './components/alimentos-proplan/alimentos-proplan';
+import { AlimentosRoyalCanin } from './components/alimentos-royalcanin/alimentos-royalcanin';
+import { AlimentosGanador } from './components/alimentos-ganador/alimentos-ganador';
+import { AlimentosHills } from './components/alimentos-hills/alimentos-hills';
+import { ServiciosVacunas } from './components/servicios-vacunas/servicios-vacunas';
+import { ServiciosEsteticas } from './components/servicios-esteticas/servicios-esteticas';
+import { ServiciosBanos } from './components/servicios-banos/servicios-banos';
+import { ServiciosDesparasitaciones } from './components/servicios-desparasitaciones/servicios-desparasitaciones';
 
 
 export const routes: Routes = [
@@ -20,6 +31,15 @@ export const routes: Routes = [
     { path: 'pagina-principal', component: PaginaPrincipal },
     { path: '', redirectTo: '/pagina-principal', pathMatch: 'full' },
     { path: 'alimentos', component: Alimentos },
+    { path: 'alimentos-nupec', component: AlimentosNupec },
+    { path: 'alimentos-proplan', component: AlimentosProplan },
+    { path: 'alimentos-royalcanin', component: AlimentosRoyalCanin },
+    { path: 'alimentos-ganador', component: AlimentosGanador },
+    { path: 'alimentos-hills', component: AlimentosHills },
+    { path: 'servicios-vacunas', component: ServiciosVacunas },
+    { path: 'servicios-esteticas', component: ServiciosEsteticas },
+    { path: 'servicios-banos', component: ServiciosBanos },
+    { path: 'servicios-desparasitaciones', component: ServiciosDesparasitaciones },
     { path: 'criadero-pastor', component: CriaderoPastor },
     { path: 'accesorios', component: Accesorios },
     { path: 'servicios', component: Servicios },
@@ -27,4 +47,6 @@ export const routes: Routes = [
     { path: 'clientes', component: Clientes },
     { path: 'historial-clinico', component: HistorialClinico },
     { path: 'proveedores', component: Proveedores },
+    { path: 'listado-medicamentos', component: ListadoMedicamentos },
+    { path: 'carnet-vacunacion', component: CarnetVacunacion },
 ];
