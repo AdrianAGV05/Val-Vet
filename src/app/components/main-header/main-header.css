@@ -49,6 +49,14 @@
   background: #458b8a !important;
 }
 
+.carnet {
+  background: #1d4ed8 !important;
+}
+
+.carnet:hover {
+  background: #1e40af !important;
+}
+
 @media (max-width: 768px) {
   .nav-buttons {
     gap: 20px;
