@@ -1,0 +1,64 @@
+<header class="header">
+  <a routerLink="/alimentos" class="home-icon" title="Volver a Alimentos">
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+    </svg>
+  </a>
+  <div class="header-content">
+    <h1 class="title">Val Vet</h1>
+    <h2 class="subtitle">Cuidado veterinario y estetico</h2>
+  </div>
+</header>
+<app-main-header></app-main-header>
+
+<div class="content">
+  <div class="header-banner">
+    <img src="/assets/Royal Canin.png" alt="Royal Canin logo banner" class="banner-logo">
+    <div class="banner-text">
+      <h2 class="section-title">Línea Especializada Royal Canin</h2>
+      <p class="section-description">
+        Nutrición a la medida y soluciones de salud adaptadas a la edad, tamaño, raza y necesidades médicas específicas de tu perro o gato. Todo bajo pedido.
+      </p>
+    </div>
+  </div>
+
+  <div class="alimentos-menu">
+    @for (producto of productos; track producto.nombre) {
+      <div class="producto-card">
+        <div class="producto-imagen">
+          <img [src]="producto.imagen" [alt]="producto.nombre">
+          <span class="categoria-badge" [ngClass]="producto.categoria.toLowerCase()">
+            {{ producto.categoria }}
+          </span>
+        </div>
+        <div class="producto-info">
+          <div class="meta-info">
+            <span class="etapa-badge">{{ producto.etapa }}</span>
+          </div>
+          <h3>{{ producto.nombre }}</h3>
+          <p class="descripcion">{{ producto.descripcion }}</p>
+          
+          <div class="beneficios-seccion">
+            <h4>Beneficios Clave:</h4>
+            <ul>
+              @for (beneficio of producto.beneficios; track beneficio) {
+                <li>
+                  <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                  </svg>
+                  <span>{{ beneficio }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+          
+          <a href="https://wa.me/527228412750?text=Hola,%20me%20gustaria%20pedir%20el%20alimento%20{{ producto.nombre }}" target="_blank" class="btn-comprar">
+            Pedir por WhatsApp
+          </a>
+        </div>
+      </div>
+    }
+  </div>
+</div>
+
+<app-pie-de-pagina></app-pie-de-pagina>

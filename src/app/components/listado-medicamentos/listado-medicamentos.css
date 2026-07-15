@@ -1,0 +1,220 @@
+.admin-layout {
+    display: flex;
+    height: 100vh;
+    background-color: #f8fafc;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background: #085821;
+    /* Dark Navy */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-header {
+    padding: 24px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+}
+
+.logo-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+.sidebar-nav {
+    padding: 12px;
+    flex: 1;
+}
+
+.nav-section {
+    padding: 16px 12px 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 4px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+.nav-item.active {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.nav-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+}
+
+/* Main Wrapper */
+.main-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Top Header */
+.top-header {
+    height: 70px;
+    background: #fff;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+}
+
+.breadcrumb {
+    color: #64748b;
+    font-size: 0.875rem;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.branch-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: #f1f5f9;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    color: #334155;
+    cursor: pointer;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    background: #10b981;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+.user-name {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: #1e293b;
+}
+
+/* Main Content Area */
+.main-content {
+    padding: 32px;
+    overflow-y: auto;
+}
+
+.view-header h1 {
+    font-size: 2rem;
+    color: #1e293b;
+    margin: 0;
+    font-weight: 800;
+}
+
+.view-header p {
+    color: #64748b;
+    margin: 8px 0 32px;
+}
+
+/* Custom Stock Status Badges */
+.badge-stock {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.badge-stock.high {
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.badge-stock.medium {
+    background-color: #fef3c7;
+    color: #92400e;
+    border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.badge-stock.low {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    animation: pulse-border 2s infinite;
+}
+
+@keyframes pulse-border {
+    0% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    }
+}

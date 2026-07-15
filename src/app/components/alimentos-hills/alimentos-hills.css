@@ -1,0 +1,314 @@
+.header {
+  background: linear-gradient(to right, #1e293b, #334155);
+  padding: 40px 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.home-icon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #ef4444;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.home-icon:hover {
+  color: #ffffff;
+  background: #ef4444;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+}
+
+.header-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  font-size: 60px;
+  margin: 0;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 3px;
+  font-family: 'Arial Black', 'Arial', sans-serif;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-size: 40px;
+  margin: 0;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 3px;
+  font-family: 'Arial Black', 'Arial', sans-serif;
+  text-transform: uppercase;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+  padding: 40px 20px;
+  background-color: #f8fafc;
+}
+
+/* Banner section styling */
+.header-banner {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 0 auto 40px auto;
+  max-width: 1400px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  color: white;
+  border-left: 5px solid #ef4444;
+}
+
+.banner-logo {
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+  object-fit: cover;
+  border: 4px solid #ef4444;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.banner-text {
+  flex: 1;
+}
+
+.section-title {
+  font-size: 40px;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+  font-family: 'Arial Black', 'Arial', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.section-description {
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 0;
+  font-family: 'Georgia', serif;
+  color: #94a3b8;
+}
+
+/* Grid & Cards styling */
+.alimentos-menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.producto-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 3px solid transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.producto-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+  border-color: #ef4444;
+}
+
+.producto-imagen {
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1e293b, #475569);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.producto-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.producto-card:hover .producto-imagen img {
+  transform: scale(1.08);
+}
+
+.categoria-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.categoria-badge.perros {
+  background-color: #0284c7; /* Blue */
+}
+
+.categoria-badge.gatos {
+  background-color: #db2777; /* Pink */
+}
+
+.producto-info {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.meta-info {
+  margin-bottom: 8px;
+}
+
+.etapa-badge {
+  background: #f1f5f9;
+  color: #334155;
+  border: 1px solid #e2e8f0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.producto-info h3 {
+  font-size: 22px;
+  color: #0f172a;
+  margin: 0 0 12px 0;
+  font-family: 'Arial Black', 'Arial', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.descripcion {
+  font-size: 15px;
+  color: #475569;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  font-family: 'Georgia', serif;
+  flex-grow: 1;
+}
+
+.beneficios-seccion {
+  margin-bottom: 25px;
+}
+
+.beneficios-seccion h4 {
+  font-size: 14px;
+  color: #1e293b;
+  text-transform: uppercase;
+  margin: 0 0 10px 0;
+  font-family: 'Arial Black', 'Arial', sans-serif;
+  letter-spacing: 1px;
+}
+
+.beneficios-seccion ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.beneficios-seccion li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  color: #334155;
+  font-family: 'Georgia', serif;
+}
+
+.check-icon {
+  width: 16px;
+  height: 16px;
+  color: #ef4444;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.btn-comprar {
+  width: 100%;
+  padding: 12px 25px;
+  background: linear-gradient(to right, #be123c, #ef4444);
+  color: #ffffff;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.btn-comprar:hover {
+  background: #ffffff;
+  color: #ef4444;
+  border-color: #ef4444;
+  transform: scale(1.03);
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+}
+
+@media (max-width: 768px) {
+  .header-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .banner-logo {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .section-title {
+    font-size: 28px;
+  }
+  
+  .title {
+    font-size: 40px;
+  }
+  
+  .subtitle {
+    font-size: 26px;
+  }
+}

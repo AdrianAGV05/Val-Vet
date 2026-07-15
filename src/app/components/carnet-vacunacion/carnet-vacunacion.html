@@ -1,0 +1,209 @@
+<header class="header">
+  <a routerLink="/pagina-principal" class="home-icon" title="Volver al Inicio">
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+    </svg>
+  </a>
+  <div class="header-content">
+    <h1 class="title">Val Vet</h1>
+    <h2 class="subtitle">Carnet Digital de Vacunación</h2>
+  </div>
+</header>
+
+<div class="carnet-container">
+  <!-- Selector de Mascotas -->
+  <div class="pets-selector-section">
+    <h3>Selecciona tu Mascota</h3>
+    <div class="pets-grid">
+      @for (mascota of mascotas; track mascota.nombre; let idx = $index) {
+        <div class="pet-select-card" [class.active]="idx === selectedPetIndex" (click)="selectPet(idx)">
+          <div class="pet-avatar" [attr.data-species]="mascota.especie.toLowerCase()">
+            {{ mascota.avatar }}
+          </div>
+          <div class="pet-select-info">
+            <h4>{{ mascota.nombre }}</h4>
+            <span>{{ mascota.especie }} • {{ mascota.raza }}</span>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Detalles de la Mascota Seleccionada -->
+  <div class="active-pet-details">
+    <div class="pet-profile-card">
+      <div class="profile-header">
+        <div class="profile-avatar-large" [attr.data-species]="selectedPet.especie.toLowerCase()">
+          {{ selectedPet.avatar }}
+        </div>
+        <div class="profile-title">
+          <h2>{{ selectedPet.nombre }}</h2>
+          <p class="owner">Propietario: <strong>{{ selectedPet.propietario }}</strong></p>
+        </div>
+      </div>
+      
+      <div class="profile-specs">
+        <div class="spec-item">
+          <span class="spec-label">Especie</span>
+          <span class="spec-value">{{ selectedPet.especie }}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Raza</span>
+          <span class="spec-value">{{ selectedPet.raza }}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Edad</span>
+          <span class="spec-value">{{ selectedPet.edad }}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Peso</span>
+          <span class="spec-value">{{ selectedPet.peso }}</span>
+        </div>
+      </div>
+
+      <div class="pet-actions">
+        <button class="btn-primary-action" (click)="openAddModal()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
+            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+          </svg>
+          Registrar Vacuna
+        </button>
+      </div>
+    </div>
+
+    <!-- Historial de Vacunas -->
+    <div class="vaccines-history-section">
+      <div class="section-header">
+        <h3>Historial Clínico de Vacunas</h3>
+        <span class="vaccines-count">{{ selectedPet.vacunas.length }} Vacunas registradas</span>
+      </div>
+
+      @if (selectedPet.vacunas.length === 0) {
+        <div class="no-vaccines-card">
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="currentColor" class="empty-icon">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+          </svg>
+          <p>No hay vacunas registradas para {{ selectedPet.nombre }}.</p>
+          <button class="btn-secondary-action" (click)="openAddModal()">Agregar primera vacuna</button>
+        </div>
+      } @else {
+        <div class="vaccines-list">
+          @for (vacuna of selectedPet.vacunas; track vacuna.nombre; let idx = $index) {
+            <div class="vaccine-card" [class]="vacuna.estado.toLowerCase()">
+              <div class="vaccine-card-header">
+                <div class="vaccine-title-group">
+                  <h4>{{ vacuna.nombre }}</h4>
+                  <span class="disease-label">Previene: {{ vacuna.enfermedad }}</span>
+                </div>
+                <span class="status-badge" [class]="vacuna.estado.toLowerCase()">
+                  {{ vacuna.estado }}
+                </span>
+              </div>
+
+              <div class="vaccine-details-grid">
+                <div class="detail-block">
+                  <span class="detail-label">Fecha de Aplicación</span>
+                  <span class="detail-value">{{ vacuna.fechaAplicacion | date:'dd/MM/yyyy' }}</span>
+                </div>
+                <div class="detail-block">
+                  <span class="detail-label">Próxima Dosis / Refuerzo</span>
+                  <span class="detail-value reinforcement-date">
+                    {{ vacuna.fechaRefuerzo ? (vacuna.fechaRefuerzo | date:'dd/MM/yyyy') : 'No requerido' }}
+                  </span>
+                </div>
+                <div class="detail-block">
+                  <span class="detail-label">Lote</span>
+                  <span class="detail-value">{{ vacuna.lote || 'N/A' }}</span>
+                </div>
+                <div class="detail-block">
+                  <span class="detail-label">Médico Veterinario</span>
+                  <span class="detail-value">{{ vacuna.veterinario }}</span>
+                </div>
+              </div>
+
+              <div class="vaccine-card-actions">
+                @if (vacuna.estado === 'Vencida' || vacuna.estado === 'Programada') {
+                  <a href="https://wa.me/527228412750?text=Hola,%20me%20gustaria%20agendar%20una%20cita%20para%20la%20vacuna%20de%20refuerzo%20de%20{{ vacuna.nombre }}%20para%20mi%20mascota%20{{ selectedPet.nombre }}"
+                     target="_blank" class="btn-whatsapp-reinforce">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 6px;">
+                      <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                    Agendar Refuerzo
+                  </a>
+                }
+                <button class="btn-delete" (click)="deleteVacuna(idx)" title="Eliminar Registro">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+                  </svg>
+                  Eliminar
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</div>
+
+<!-- Modal para Registrar Nueva Vacuna -->
+@if (showModal) {
+  <div class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Registrar Vacuna para {{ selectedPet.nombre }}</h3>
+        <button class="btn-close-modal" (click)="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="saveVacuna()" #vacunaForm="ngForm" class="modal-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre de la Vacuna *</label>
+              <input type="text" id="nombre" name="nombre" [(ngModel)]="formNombre" required placeholder="Ej: Sextuple, Triple Felina, Rabia">
+            </div>
+            <div class="form-group">
+              <label for="enfermedad">Enfermedad que Previene</label>
+              <input type="text" id="enfermedad" name="enfermedad" [(ngModel)]="formEnfermedad" placeholder="Ej: Parvovirosis, Rabia">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fechaAplicacion">Fecha de Aplicación *</label>
+              <input type="date" id="fechaAplicacion" name="fechaAplicacion" [(ngModel)]="formFechaAplicacion" required>
+            </div>
+            <div class="form-group">
+              <label for="fechaRefuerzo">Fecha de Próxima Dosis / Refuerzo</label>
+              <input type="date" id="fechaRefuerzo" name="fechaRefuerzo" [(ngModel)]="formFechaRefuerzo">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="lote">Número de Lote</label>
+              <input type="text" id="lote" name="lote" [(ngModel)]="formLote" placeholder="Ej: PV-9821">
+            </div>
+            <div class="form-group">
+              <label for="veterinario">Veterinario Responsable</label>
+              <input type="text" id="veterinario" name="veterinario" [(ngModel)]="formVeterinario" placeholder="Ej: Dra. Ana Gómez">
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="estado">Estado</label>
+            <select id="estado" name="estado" [(ngModel)]="formEstado">
+              <option value="Aplicada">Aplicada</option>
+              <option value="Programada">Programada</option>
+              <option value="Vencida">Vencida</option>
+            </select>
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="btn-cancel" (click)="closeModal()">Cancelar</button>
+            <button type="submit" class="btn-submit" [disabled]="!vacunaForm.form.valid">Guardar Registro</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+}
